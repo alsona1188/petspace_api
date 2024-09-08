@@ -21,6 +21,10 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
+    description = models.TextField(blank=True)
+    image = models.ImageField(
+        upload_to='images/', default='../default_post_htbmpw', blank=True
+    )
     category = models.CharField(
         max_length=50, choices=CATEGORIES, default='Pet'
     )
@@ -32,9 +36,3 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.id} {self.title}'
 
-class PostImage(models.Model):
-    post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/', default='../default_post_htbmpw', blank=True)
-
-    def __str__(self):
-        return f'Image for {self.post.title} ({self.id})'
