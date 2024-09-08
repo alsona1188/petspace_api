@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from taggit.managers import TaggableManager
 
 CATEGORIES = (
     ("pet", "Pet"),
@@ -28,7 +27,6 @@ class Post(models.Model):
     category = models.CharField(
         max_length=50, choices=CATEGORIES, default='Pet'
     )
-    tags = TaggableManager(blank=True)
 
     class Meta:
         ordering = ['-created_at']
