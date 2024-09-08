@@ -10,10 +10,6 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('taggit', '0003_taggeditem_add_unique_index'),
-    ]
 
     operations = [
         migrations.CreateModel(
@@ -26,7 +22,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(blank=True)),
                 ('category', models.CharField(choices=[('pet', 'Pet'), ('dog', 'Dog'), ('cat', 'Cat'), ('bird', 'Bird'), ('bunny', 'Bunny'), ('food', 'Food'), ('accessories', 'Accessories')], default='Pet', max_length=50)),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('tags', taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags')),
+    
             ],
             options={
                 'ordering': ['-created_at'],

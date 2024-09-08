@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-alsona1188-petspaceapi-ro274vczypq.ws-eu116.gitpod.io']
+ALLOWED_HOSTS = ['8000-alsona1188-petspaceapi-0n3pgvaedp8.ws-eu116.gitpod.io']
 
 
 # Application definition
@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
-    'taggit',
 
     'profiles',
     'posts',
