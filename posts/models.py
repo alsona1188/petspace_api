@@ -1,20 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-CATEGORIES = (
-    ("pet", "Pet"),
-    ("dog", "Dog"),
-    ("cat", "Cat"),
-    ("bird", "Bird"),
-    ("bunny", "Bunny"),
-    ("food", "Food"),
-    ("accessories", "Accessories"),
-)
-
 class Post(models.Model):
     """
     Post model, related to User
     """
+    image_filter_choices = [
+        ('fun', 'Fun'),
+        ('food', 'Food'),
+        ('nature', 'Nature'),
+        ('health', 'Health'),
+        ('pet', 'Pet'),
+        ('cat', 'Cat'),
+        ('dog', 'Dog'),
+        ('bird', 'Bird'),
+        ('2024', '2024'),
+    ]
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -23,8 +24,10 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_htbmpw', blank=True
     )
-    category = models.CharField(
-        max_length=50, choices=CATEGORIES, default='Pet'
+    image_filter = models.CharField(
+        max_length=32,
+        choices=image_filter_choices,
+        default='Pet'
     )
 
     class Meta:
