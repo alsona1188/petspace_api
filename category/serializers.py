@@ -4,20 +4,19 @@ from .models import Category
 
 class CategorySerializer(serializers.ModelSerializer):
     """
-    Serializes Category model (id, name, created_at) for API.
+    Serializer for Category model
     """
     class Meta:
         model = Category
-        fields = ['id', 'name', 'created_at']
+        fields = ['id', 'name', 'created_on']
 
 
 class CategoryDetailSerializer(CategorySerializer):
     """
-    Serializer for the Comment model used in Detail view
-    Post is a read only field.
+    Serializer for Comment model in Detail view
     """
     category_id = serializers.ReadOnlyField(source='id')
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'created_at', 'category_id']
+        fields = ['id', 'name', 'created_on', 'category_id']
