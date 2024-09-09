@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('like_post.urls')),
     path('', include('like_comment.urls')),
     path('', include('category.urls')),
+    path('', include('followers.urls')),
 ]
