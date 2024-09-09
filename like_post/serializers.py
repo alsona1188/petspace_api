@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from likes.models import LikePost
+from like_post.models import LikePost
 
 
 class LikePostSerializer(serializers.ModelSerializer):
