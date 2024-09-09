@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from posts.models import Post
 from category.models import Category
+from like_post.models import LikePost
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -9,6 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     category_name = serializers.ReadOnlyField(source='category.name')
+    like_id_post = serializers.SerializerMethodField()
 
     category = serializers.SlugRelatedField(
         queryset=Category.objects.all(),
@@ -41,12 +43,22 @@ class PostSerializer(serializers.ModelSerializer):
         """
         return obj.category.name if obj.category else None
 
+    def get_like_id_post(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            like = LikePost.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return like.id if like else None
+        return None
+
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'description', 'image', 'image_filter','category', 'category_name',
+            'like_id_post',
         ]
 
 
