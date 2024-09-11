@@ -61,7 +61,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
- DEBUG = 'DEV' in os.environ
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['8000-alsona1188-petspaceapi-hju8l31w6gh.ws-eu116.gitpod.io',
                  "https://petspace-api-195e436e05ae.herokuapp.com/" ]
