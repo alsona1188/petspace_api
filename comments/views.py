@@ -16,6 +16,9 @@ class CommentList(generics.ListCreateAPIView):
         likes_count_comment=Count('like_comment', distinct=True),
     ).order_by('-created_at')
 
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['post'] #retrieve all the comments associated with a given post
+
     filter_backends = [
         filters.OrderingFilter
     ]
@@ -23,6 +26,9 @@ class CommentList(generics.ListCreateAPIView):
     ordering_fields = [
         'likes_count_comment',
     ]
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['post']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
