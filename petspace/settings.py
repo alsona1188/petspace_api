@@ -65,7 +65,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = 'DEV' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-alsona1188-petspaceapi-hju8l31w6gh.ws-eu116.gitpod.io',
+ALLOWED_HOSTS = ['8000-alsona1188-petspaceapi-968rfmo2q4r.ws-eu116.gitpod.io',
                 'petspace-api-195e436e05ae.herokuapp.com' ]
 
 
@@ -153,18 +153,18 @@ WSGI_APPLICATION = 'petspace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DEV' in os.environ:
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': BASE_DIR / 'db.sqlite3',
-         }
-     }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
-    print("connected")
+# if 'DEV' in os.environ:
+#      DATABASES = {
+#          'default': {
+#              'ENGINE': 'django.db.backends.sqlite3',
+#              'NAME': BASE_DIR / 'db.sqlite3',
+#          }
+#      }
+# else:
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+print("connected")
 
 
 # Password validation
