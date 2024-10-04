@@ -6,17 +6,7 @@ class Post(models.Model):
     """
     Post model, related to User
     """
-    image_filter_choices = [
-        ('fun', 'Fun'),
-        ('food', 'Food'),
-        ('nature', 'Nature'),
-        ('health', 'Health'),
-        ('pet', 'Pet'),
-        ('cat', 'Cat'),
-        ('dog', 'Dog'),
-        ('bird', 'Bird'),
-        ('2024', '2024'),
-    ]
+   
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -25,11 +15,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_htbmpw', blank=True
     )
-    image_filter = models.CharField(
-        max_length=32,
-        choices=image_filter_choices,
-        default='Pet'
-    )
+    
     category = models.ForeignKey(Category, null=True, blank=True,
                                  on_delete=models.SET_NULL)
 
