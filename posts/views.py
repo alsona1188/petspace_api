@@ -28,6 +28,7 @@ class PostList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',
         'like_post__owner__profile',
         'owner__profile',
+        'category',
     ]
     search_fields = [
         'owner__username',
@@ -40,7 +41,15 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        """
+        New post being created.
+        """
+        category_name = self.request.data.get('category', None)
+        if category_name:
+            category = Category.objects.get(name=category_name)
+            serializer.save(owner=self.request.user, category=category)
+        else:
+            serializer.save(owner=self.request.user)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
