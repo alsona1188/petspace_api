@@ -18,7 +18,6 @@
     -   [Setting up JSON web tokens](#setting-up-json-web-tokens)
     -   [Prepare API for deployment to Heroku](#prepare-api-for-deployment-to-heroku)
     -   [Deployment to Heroku](#deployment-to-heroku)
-    -   [Database Creation Elephant SQL](#elephantsql)
 -   [Credits](#credits)
 -   [Acknowledgements](#acknowledgements)
 
