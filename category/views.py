@@ -25,7 +25,6 @@ class CategoryList(generics.ListCreateAPIView):
         # Save the new category associated with the logged-in user
         serializer.save()
 
-    
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()

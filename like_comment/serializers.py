@@ -14,7 +14,6 @@ class LikeCommentSerializer(serializers.ModelSerializer):
         model = LikeComment
         fields = ['id', 'created_at', 'owner', 'comment']
 
-    
     def create(self, validated_data):
         try:
             return super().create(validated_data)
@@ -22,3 +21,4 @@ class LikeCommentSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({
                 'detail': 'possible duplicate'
             })
+            

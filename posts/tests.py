@@ -8,7 +8,6 @@ class PostListViewTests(APITestCase):
     def setUp(self):
         User.objects.create_user(username='alsona', password='pass1')
 
-
     def test_can_list_posts(self):
         alsona = User.objects.get(username='alsona')
         Post.objects.create(owner=alsona, title='a title1')
@@ -17,7 +16,6 @@ class PostListViewTests(APITestCase):
         print(response.data)
         print(len(response.data))
 
-    
     def test_logged_in_user_can_create_post(self):
         self.client.login(username='alsona', password='pass1')
         response = self.client.post('/posts/', {'title': 'a title1'})
@@ -25,11 +23,9 @@ class PostListViewTests(APITestCase):
         self.assertEqual(count, 1)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-
     def test_user_not_logged_in_cant_create_post(self):
         response = self.client.post('/posts/', {'title': 'a title1'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
 
 
 class PostDetailViewTests(APITestCase):
@@ -40,7 +36,7 @@ class PostDetailViewTests(APITestCase):
             owner=alsona, title='a title', description='alsona content'
         )
         Post.objects.create(
-            owner=sara, title='another title', description ='sara content'
+         owner=sara, title='another title', description='sara content'
         )
 
     def test_can_retrieve_post_using_valid_id(self):

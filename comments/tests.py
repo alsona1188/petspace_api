@@ -45,7 +45,8 @@ class CommentsDetailViewTests(APITestCase):
         alsona = User.objects.create_user(username='alsona', password='pass')
         sara = User.objects.create_user(username='sara', password='pass')
         Post.objects.create(
-            owner=alsona, title='alsona title', description='alsona description'
+            owner=alsona, title='alsona title',
+            description='alsona description'
         )
         Post.objects.create(
             owner=sara, title='sara title', description='sara description'

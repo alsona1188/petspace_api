@@ -54,7 +54,6 @@ REST_AUTH_SERIALIZERS = {
 }
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -65,7 +64,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['8000-alsona1188-petspaceapi-968rfmo2q4r.ws-eu116.gitpod.io',
-                'petspace-api-195e436e05ae.herokuapp.com' ]
+                 'petspace-api-195e436e05ae.herokuapp.com']
 
 
 # Application definition
